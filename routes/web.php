@@ -22,3 +22,12 @@ Route::get('/', function () {
 
 Route::get('addNotification', [\App\Http\Controllers\AutomatedNotificationController::class, 'add']);
 Route::post('notification', [\App\Http\Controllers\AutomatedNotificationController::class, 'store']);
+Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/notification', [\App\Http\Controllers\NotificationController::class,'notification']);
+Route::patch('/fcm-token', [HomeController::class, 'updateToken'])->name('fcmToken');
+Route::post('/send-notification',[HomeController::class,'notification'])->name('notification');
+

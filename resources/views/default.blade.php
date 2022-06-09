@@ -10,5 +10,8 @@
 </head>
 <body>
     @yield('content')
+    <title>Document</title>
+</head>
+    
 </body>
 </html>

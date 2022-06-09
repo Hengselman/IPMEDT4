@@ -19,10 +19,13 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('score');
+            $table->integer('score')->default(0);
             $table->integer('age');
-            $table->integer('exercise_amount');
-            $table->integer('intensity');
+            $table->integer('exercise_amount')->default(0);
+
+            $table->string('intensity')->nullable();
+            $table->foreign('intensity')->references('intensity')->on('intensities');
+
             $table->rememberToken();
             $table->timestamps();
         });
@@ -35,6 +38,9 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign('users_intensity_foreign');
+        });
         Schema::dropIfExists('users');
     }
 }

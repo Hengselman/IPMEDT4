@@ -21,8 +21,6 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('score')->default(0);
             $table->integer('age');
-            $table->integer('exercise_amount');
-            $table->integer('intensity');
             $table->rememberToken();
             $table->timestamps();
         });

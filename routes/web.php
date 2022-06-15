@@ -14,10 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/registernew', [\App\Http\Controllers\UserController::class,'registerPage']);
 Route::post('/registernew', [\App\Http\Controllers\UserController::class,'register']);
+
 Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('addNotification', [\App\Http\Controllers\AutomatedNotificationController::class, 'add']);
+Route::post('notification', [\App\Http\Controllers\AutomatedNotificationController::class, 'store']);
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

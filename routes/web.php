@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/registernew', [\App\Http\Controllers\UserController::class,'registerPage']);
+Route::post('/registernew', [\App\Http\Controllers\UserController::class,'register']);
 Route::get('/', function () {
     return view('welcome');
 });

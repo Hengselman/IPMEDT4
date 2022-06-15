@@ -27,4 +27,9 @@ class UserController extends Controller
         return redirect('register');
 
     }
+
+    public function index()
+    {
+        return User::all();;
+    }
 }

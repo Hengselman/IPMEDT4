@@ -26,6 +26,8 @@ Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/scoreboard', [\App\Http\Controllers\UserController::class, 'index']);
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/notification', [\App\Http\Controllers\NotificationController::class,'notification']);
 Route::patch('/fcm-token', [HomeController::class, 'updateToken'])->name('fcmToken');

@@ -4,9 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Day;
+use App\Models\User;
+use App\Models\Exercise;
+use App\Models\AutomatedNotification;
 
 class AutomatedNotificationController extends Controller
 {
+
+    public function show()
+    {
+        $user = User::find(1);
+        $intensity = AutomatedNotification::all()->where('userId', $user->id)->first()->intensity;
+        $exercises = Exercise::all()->where('intensity', $intensity);
+
+        return $exercises->random();
+    }
 
     public function add()
     {   

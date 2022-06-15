@@ -5,7 +5,7 @@
 @section('content')
 <article>
 
-    <form action="/register" method="POST" enctype="multipart/form-data">
+    <form action="/registernew" method="POST" enctype="multipart/form-data">
         @csrf
         <header>
             <h1>Maak uw account</h1>

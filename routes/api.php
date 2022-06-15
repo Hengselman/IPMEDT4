@@ -22,3 +22,4 @@ Route::get('/scoreboard', [\App\Http\Controllers\UserController::class, 'index']
 Route::get('/register', [\App\Http\Controllers\UserController::class,'registerPage']);
 
 Route::get('/exercise', [\App\Http\Controllers\AutomatedNotificationController::class, 'show']);
+Route::get('/finishedexercise/{exerciseId}', [\App\Http\Controllers\UserController::class, 'addCalories']);

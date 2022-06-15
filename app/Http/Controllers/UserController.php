@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
+use App\Models\Exercise;
 use Hash;
 
 class UserController extends Controller
@@ -31,5 +32,19 @@ class UserController extends Controller
     public function index()
     {
         return User::all();;
+    }
+
+    public function addCalories($exerciseId)
+    {
+        $exercise = Exercise::find($exerciseId);
+        $user = User::find(1);
+
+        $user->score = $user->score + $exercise->calories;
+
+        try{
+            $user->save();
+        } catch (Exception $e) {
+            return redirect('/addNotification');
+        }
     }
 }

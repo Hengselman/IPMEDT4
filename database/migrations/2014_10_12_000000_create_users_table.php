@@ -19,10 +19,6 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('score');
-            $table->integer('age');
-            $table->integer('exercise_amount');
-            $table->integer('intensity');
             $table->rememberToken();
             $table->timestamps();
         });

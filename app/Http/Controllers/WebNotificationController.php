@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Auth;
+use Carbon\Carbon;
 
 class WebNotificationController extends Controller
 {
@@ -16,15 +17,16 @@ class WebNotificationController extends Controller
     {
         return view('home');
     }
+
   
     public function storeToken(Request $request)
     {
         auth()->user()->update(['device_key'=>$request->token]);
         return response()->json(['Token successfully stored.']);
     }
-  
-    public function sendWebNotification(Request $request)
-    {
+
+    public function sendWebNotification($title, $body)
+    {   
         $url = 'https://fcm.googleapis.com/fcm/send';
         $FcmToken = User::whereNotNull('device_key')->pluck('device_key')->all();
           
@@ -33,8 +35,8 @@ class WebNotificationController extends Controller
         $data = [
             "registration_ids" => $FcmToken,
             "notification" => [
-                "title" => $request->title,
-                "body" => $request->body,  
+                "title" => $title,
+                "body" => $body,  
             ]
         ];
         $encodedData = json_encode($data);
@@ -65,10 +67,21 @@ class WebNotificationController extends Controller
         // Close connection
         curl_close($ch);
         // FCM response
-        dd($result);        
+        // dd($result);        
     }
 
-    public function checkForExercise () {
+    public function checkForExercise(){
+        $user = User::all();
+        $time = Carbon::now();
+        $currentTime = $time->hour . ":" . $time->minute;
         
+
+        if($currentTime == $currentTime){
+            $title = "Titel Test";
+            $body = "Yo Pesto";
+            return $this->sendWebNotification($title, $body);
+        }
     }
+
+    
 }

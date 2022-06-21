@@ -24,6 +24,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/push-notificaiton', [WebNotificationController::class, 'index'])->name('push-notificaiton');
 Route::post('/store-token', [WebNotificationController::class, 'storeToken'])->name('store.token');
+// Route::post('/send-web-notification', [WebNotificationController::class, 'checkForExercise'])->name('send.web-notification');
 Route::post('/send-web-notification', [WebNotificationController::class, 'sendWebNotification'])->name('send.web-notification');
 Auth::routes();
 

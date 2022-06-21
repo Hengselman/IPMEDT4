@@ -94,7 +94,6 @@ class AuthController extends Controller
 
         $user = User::where('name', $request->name)->first();
 
-
         return response()->json([
             'status' => 200,
             'message' => 'Succesvol uitgelogd',

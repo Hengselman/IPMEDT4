@@ -15,9 +15,10 @@ class CreateAutomatedNotificationsTable extends Migration
     {
         Schema::create('automated_notifications', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('userId');
+            $table->unsignedBigInteger('userId')->unique();
             $table->integer('exercise_amount');
             $table->integer('intensity');
+            $table->string('time')->nullable();
             $table->boolean('monday')->nullable();
             $table->boolean('tuesday')->nullable();
             $table->boolean('wednesday')->nullable();

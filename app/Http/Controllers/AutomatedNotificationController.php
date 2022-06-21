@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Time;
+use App\models\User;
+use App\Models\AutomatedNotification;
 use DB;
 
 class AutomatedNotificationController extends Controller
@@ -24,11 +26,10 @@ class AutomatedNotificationController extends Controller
         ]);
     }
 
-    public function store(Request $request, \App\Models\AutomatedNotification $notification)
+    public function store(Request $request, \App\Models\User $user, \App\Models\AutomatedNotification $notification)
     {
-        // $user = User::all()->where($request->userId, 'id');
-        DB::update('update users set time = ' . $request->time . ' where id = ?', $request->userId);
-
+     
+        $notification->time = $request->time;
         $notification->userId = $request->userId;
         $notification->exercise_amount = $request->exercise_amount;
         $notification->intensity = $request->intensity;
@@ -41,7 +42,24 @@ class AutomatedNotificationController extends Controller
         $notification->sunday = $request->sunday;
 
         try{
-            $notification->save();
+            $not = AutomatedNotification::all()->where("userId", $request->userId)->first();
+            if($not != null){
+                $not->update([
+                    'time' => $request->time,
+                    'userId' => $request->userId,
+                    'exercise_amount' => $request->exercise_amount,
+                    'intensity' => $request->intensity,
+                    'monday' => $request->monday,
+                    'tuesday' => $request->tuesday,
+                    'wednesday' => $request->wednesday,
+                    'thursday' => $request->thursday,
+                    'friday' => $request->friday,
+                    'saturday' => $request->saturday,
+                    'sunday' => $request->sunday,
+                ]);
+            } else {
+                $notification->save();
+            }
         } catch (Exception $e) {
             return redirect('/addNotification');
         }

@@ -21,7 +21,6 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('score')->default(0);
             $table->integer('age');
-            $table->string('time')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

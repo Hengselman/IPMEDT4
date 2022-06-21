@@ -9,4 +9,16 @@ class AutomatedNotification extends Model
 {
     use HasFactory;
     protected $table = 'automated_notifications';
+    protected $fillable = [
+        'time',
+        'intensity',
+        'exercise_amount',
+        'monday',
+        'tuesday',
+        'wednesday',
+        'thursday',
+        'friday',
+        'saturday',
+        'sunday',
+    ];
 }

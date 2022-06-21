@@ -9,8 +9,9 @@ use Auth;
 class UserController extends Controller
 {
     public function profile () {
-        if (Auth::user()) {
-            $user = Auth::user();
+
+        if (Auth::check()) {
+            $user = Auth::User();
             return $user;
         } else {
             // return redirect("");

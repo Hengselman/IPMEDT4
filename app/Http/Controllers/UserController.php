@@ -17,4 +17,24 @@ class UserController extends Controller
             // return redirect("");
         }
     }
+
+    public function index()
+    {
+        return User::all();;
+    }
+
+    public function addCalories($exerciseId)
+    {
+        $exercise = Exercise::find($exerciseId);
+        $user = User::find(1);
+        
+
+        $user->score = $user->score + $exercise->calories;
+
+        try{
+            $user->save();
+        } catch (Exception $e) {
+            return redirect('/addNotification');
+        }
+    }
 }

@@ -24,6 +24,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('logout', [App\Http\Controllers\AuthController::class, 'logout']);
 });
 
+// Route::middleware(['auth:sanctum'])->group(function () {
+    Route::post('profiel', [App\Http\Controllers\AuthController::class, 'profile']);
+// });
+
+// Route::post('/getUser', [App\Http\Controllers\AuthController::class, return $request->user()]);
+
+Route::post('/setnotifications', [\App\Http\Controllers\AutomatedNotificationController::class, 'store']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

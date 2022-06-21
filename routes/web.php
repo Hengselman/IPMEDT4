@@ -17,6 +17,8 @@ use App\Http\Controllers\UserController;
 
 Route::get('/profiel', [App\Http\Controllers\UserController::class, 'profile']);
 
+Route::get('/calorie/{$id}', [UserController::class, 'addCalories']);
+
 Route::get('/', function () {
     return view('welcome');
 });

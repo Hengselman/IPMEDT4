@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Auth;
+use Carbon\Carbon;
 
 class WebNotificationController extends Controller
 {
@@ -16,6 +17,7 @@ class WebNotificationController extends Controller
     {
         return view('home');
     }
+
   
     public function storeToken(Request $request)
     {
@@ -66,5 +68,11 @@ class WebNotificationController extends Controller
         curl_close($ch);
         // FCM response
         dd($result);        
+    }
+
+    public function checkForExercise(){
+        $time = Carbon::now();
+        $currentTime = $time->hour . ":" . $time->minute;
+        dd($currentTime);
     }
 }

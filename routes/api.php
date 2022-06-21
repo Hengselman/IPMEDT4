@@ -30,6 +30,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 // Route::post('/getUser', [App\Http\Controllers\AuthController::class, return $request->user()]);
 
+Route::post('/setnotifications', [\App\Http\Controllers\AutomatedNotificationController::class, 'store']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

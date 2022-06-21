@@ -29,13 +29,13 @@ class AutomatedNotificationController extends Controller
         $notification->userId = $request->id;
         $notification->exercise_amount = $request->exercise_amount;
         $notification->intensity = $request->intensity;
-        $notification->monday = $request->input('Maandag');
-        $notification->tuesday = $request->input('Dinsdag');
-        $notification->wednesday = $request->input('Woensdag');
-        $notification->thursday = $request->input('Donderdag');
-        $notification->friday = $request->input('Vrijdag');
-        $notification->saturday = $request->input('Zaterdag');
-        $notification->sunday = $request->input('Zondag');
+        // $notification->monday = $request->input('Maandag');
+        // $notification->tuesday = $request->input('Dinsdag');
+        // $notification->wednesday = $request->input('Woensdag');
+        // $notification->thursday = $request->input('Donderdag');
+        // $notification->friday = $request->input('Vrijdag');
+        // $notification->saturday = $request->input('Zaterdag');
+        // $notification->sunday = $request->input('Zondag');
 
         try{
             $notification->save();

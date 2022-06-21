@@ -92,7 +92,7 @@ class AuthController extends Controller
 
     public function profile (Request $request) {
         $user = User::where('name', $request->name)->first();
-
+        
         
 
         return response()->json([

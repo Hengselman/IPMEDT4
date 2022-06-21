@@ -94,6 +94,10 @@ class AuthController extends Controller
 
         $user = User::where('name', $request->name)->first();
 
+        $timeString = '12:40|14:08|17:50';
+
+        $timeArray = explode("|", $timeString);
+
         return response()->json([
             'status' => 200,
             'message' => 'Succesvol uitgelogd',

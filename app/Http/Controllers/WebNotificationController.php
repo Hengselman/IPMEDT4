@@ -74,11 +74,14 @@ class WebNotificationController extends Controller
         $user = User::all();
         $time = Carbon::now();
         $currentTime = $time->hour . ":" . $time->minute;
+
+        // $timeString = '12:40|12:50|14:07';
+        // $timeArray = (explode("/", $timeString));
         
 
         if($currentTime == $currentTime){
-            $title = "Titel Test";
-            $body = "Yo Pesto";
+            $title = "time";
+            $body = "nee";
             return $this->sendWebNotification($title, $body);
         }
     }

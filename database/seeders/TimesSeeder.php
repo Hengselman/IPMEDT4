@@ -17,7 +17,7 @@ class TimesSeeder extends Seeder
         DB::table('times')->insert([
             'userId' => 1,
             'notificationId' => 1,
-            'time' => "16:25"
+            'time' => "16:25",
         ]);
     }
 }

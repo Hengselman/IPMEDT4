@@ -14,11 +14,13 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:191',
             'email' => 'required|email|max:191|unique:users,email',
+            'age' => 'required',
             'password' => 'required|min:8',
             'password_confirmation' => 'required_with:password|same:password',
         ],[
             'name.required' => 'Dit veld is verplicht.',
             'email.required' => 'Dit veld is verplicht.',
+            'age.required' => 'Dit veld is verplicht',
             'password.required' => 'Dit veld is verplicht.',
             'password_confirmation.same' => 'De wachtwoorden komen niet overeen.',
         ]);
@@ -31,6 +33,7 @@ class AuthController extends Controller
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
+                'age' => $request->age,
                 'password' => Hash::make($request->password),
             ]);
 
@@ -89,10 +92,15 @@ class AuthController extends Controller
 
     public function profile (Request $request) {
         $user = User::where('name', $request->name)->first();
+
+        
+
         return response()->json([
             'status' => 200,
             'message' => 'Succesvol uitgelogd',
             'name' => $user->name,
+            'age' => $user->age,
+            'score' => $user->score,
         ]);
     }
 }

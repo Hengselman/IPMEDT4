@@ -86,4 +86,13 @@ class AuthController extends Controller
             'message' => 'Succesvol uitgelogd',
         ]);
     }
+
+    public function profile (Request $request) {
+        $user = User::where('name', $request->name)->first();
+        return response()->json([
+            'status' => 200,
+            'message' => 'Succesvol uitgelogd',
+            'name' => $user->name,
+        ]);
+    }
 }

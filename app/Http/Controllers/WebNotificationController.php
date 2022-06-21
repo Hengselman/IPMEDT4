@@ -67,4 +67,8 @@ class WebNotificationController extends Controller
         // FCM response
         dd($result);        
     }
+
+    public function checkForExercise () {
+        
+    }
 }

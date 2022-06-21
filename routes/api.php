@@ -20,6 +20,8 @@ use App\Http\Controllers\UserController;
 Route::post('/register', [App\Http\Controllers\AuthController::class, 'register']);
 Route::post('/login', [App\Http\Controllers\AuthController::class, 'login']);
 
+Route::post('/scoreboard', [App\Http\Controllers\ScoreboardController::class, 'scoreboard']);
+
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('logout', [App\Http\Controllers\AuthController::class, 'logout']);
 });

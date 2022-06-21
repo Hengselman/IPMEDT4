@@ -91,13 +91,16 @@ class AuthController extends Controller
     }
 
     public function profile (Request $request) {
+
         $user = User::where('name', $request->name)->first();
 
         
 
+
         return response()->json([
             'status' => 200,
             'message' => 'Succesvol uitgelogd',
+            'id' => $user->id,
             'name' => $user->name,
             'age' => $user->age,
             'score' => $user->score,

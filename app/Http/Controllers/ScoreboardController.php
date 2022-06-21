@@ -10,6 +10,7 @@ class ScoreboardController extends Controller
     public function scoreboard (Request $request) {
 
         $user = User::all();
+        $user = User::orderBy('score', 'desc')->get();
         return $user;
 
     }

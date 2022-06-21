@@ -98,6 +98,7 @@ class AuthController extends Controller
         return response()->json([
             'status' => 200,
             'message' => 'Succesvol uitgelogd',
+            'id' => $user->id,
             'name' => $user->name,
             'age' => $user->age,
             'score' => $user->score,

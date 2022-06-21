@@ -24,11 +24,11 @@ class AutomatedNotificationController extends Controller
 
     public function store(Request $request, \App\Models\AutomatedNotification $notification)
     {
-        // dd($request->input("Maandag"));
-
-        $notification->userId = $request->id;
+        
         $notification->exercise_amount = $request->exercise_amount;
+        $notification->userId = $request->userId;
         $notification->intensity = $request->intensity;
+
         // $notification->monday = $request->input('Maandag');
         // $notification->tuesday = $request->input('Dinsdag');
         // $notification->wednesday = $request->input('Woensdag');
@@ -42,6 +42,9 @@ class AutomatedNotificationController extends Controller
         } catch (Exception $e) {
             return redirect('/addNotification');
         }
-        
+
+        // $notificationTime->userId = $request->userId;
+        // $notificationTime->notificationId = $notification->id;
+                
     }
 }

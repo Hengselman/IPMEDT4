@@ -64,16 +64,5 @@ class AutomatedNotificationController extends Controller
             return redirect('/addNotification');
         }
         
-        // foreach ($request->time as $number => $thisTime) {
-            
-        //     $time->notificationId = \App\Models\AutomatedNotification::all()->where('userId', $request->userId)->first()->id;
-        //     $time->userId = $request->userId;
-
-        //     try{
-        //         $time->save();
-        //     } catch (Exception $e) {
-        //         return pech;
-        //     }
-        // }        
     }
 }

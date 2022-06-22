@@ -17,8 +17,6 @@ use App\Http\Controllers\UserController;
 
 Route::get('/profiel', [App\Http\Controllers\UserController::class, 'profile']);
 
-Route::get('/calorie/{$id}', [UserController::class, 'addCalories']);
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -26,6 +24,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/push-notificaiton', [WebNotificationController::class, 'index'])->name('push-notificaiton');
 Route::post('/store-token', [WebNotificationController::class, 'storeToken'])->name('store.token');
+// Route::post('/send-web-notification', [WebNotificationController::class, 'checkForExercise'])->name('send.web-notification');
 Route::post('/send-web-notification', [WebNotificationController::class, 'sendWebNotification'])->name('send.web-notification');
 Auth::routes();
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\AutomatedNotification;
+use App\Models\PersonalAccessToken;
 use Auth;
 use Carbon\Carbon;
 
@@ -25,7 +27,7 @@ class WebNotificationController extends Controller
         return response()->json(['Token successfully stored.']);
     }
 
-    public function sendWebNotification($title, $body)
+    public function sendWebNotification($title, $body, $click_action)
     {   
         $url = 'https://fcm.googleapis.com/fcm/send';
         $FcmToken = User::whereNotNull('device_key')->pluck('device_key')->all();
@@ -36,8 +38,9 @@ class WebNotificationController extends Controller
             "registration_ids" => $FcmToken,
             "notification" => [
                 "title" => $title,
-                "body" => $body,  
-            ]
+                "body" => $body,
+                "click_action" => $click_action,  
+            ],
         ];
         $encodedData = json_encode($data);
     
@@ -69,22 +72,30 @@ class WebNotificationController extends Controller
         // FCM response
         // dd($result);        
     }
+    public function testShow () {
+        return view('test');
+    }
 
     public function checkForExercise(){
-        $user = User::all();
         $time = Carbon::now();
         $currentTime = $time->hour . ":" . $time->minute;
 
-        // $timeString = '12:40|12:50|14:07';
-        // $timeArray = (explode("/", $timeString));
-        
+        $personalAccessToken = PersonalAccessToken::first();
+        $personalAccessTokenEmail = str_replace("_Token", "", $personalAccessToken->name);
 
-        if($currentTime == $currentTime){
-            $title = "time";
-            $body = "nee";
-            return $this->sendWebNotification($title, $body);
-        }
+        $user = User::where("email", $personalAccessTokenEmail)->first();
+        $userId = $user->id;
+
+        $notifications = AutomatedNotification::where("userId", $userId)->first();
+        $splitTimes = explode("/", $notifications->time);
+
+        foreach ($splitTimes as $t) {
+            if ($currentTime == $t) {
+                $title = "Tijd voor een oefening!";
+                $body = "http://localhost:3000/";
+                $click_action = "http://localhost:3000/";
+                return $this->sendWebNotification($title, $body, $click_action);
+            }
+        };
     }
-
-    
 }

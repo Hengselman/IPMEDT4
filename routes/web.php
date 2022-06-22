@@ -15,6 +15,9 @@ use App\Http\Controllers\UserController;
 |
 */
 
+Route::get('/test', [App\Http\Controllers\WebNotificationController::class, 'testShow']);
+Route::get('/checkForExercise', [App\Http\Controllers\WebNotificationController::class, 'checkForExercise']);
+
 Route::get('/profiel', [App\Http\Controllers\UserController::class, 'profile']);
 
 Route::get('/', function () {

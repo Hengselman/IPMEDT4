@@ -14,4 +14,5 @@ class ScoreboardController extends Controller
         return $user;
 
     }
+    
 }

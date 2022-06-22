@@ -94,9 +94,8 @@ class AuthController extends Controller
 
         $user = User::where('name', $request->name)->first();
 
-        $timeString = '12:40|14:08|17:50';
-
-        $timeArray = explode("|", $timeString);
+        $user->score = $user->score + '2000';
+        $user->save();
 
         return response()->json([
             'status' => 200,

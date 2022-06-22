@@ -94,7 +94,7 @@ class AuthController extends Controller
 
         $user = User::where('name', $request->name)->first();
 
-        $user->score = $user->score + '2000';
+        $user->score = $user->score + '312';
         $user->save();
 
         return response()->json([

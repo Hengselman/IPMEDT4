@@ -93,25 +93,36 @@ class AuthController extends Controller
 
     public function profile (Request $request) {
 
-        
-
         $user = User::where('name', $request->name)->first();
 
-        $notifications = AutomatedNotification::where('userId', $user->id)->first();
-        $splitTimes = explode("/", $notifications->time);
+        if (AutomatedNotification::where('userId', $user->id)->first() !== null) {
+            $notifications = AutomatedNotification::where('userId', $user->id)->first();
+            $splitTimes = explode("/", $notifications->time);
 
-        $user->score = $user->score + '312';
-        $user->save();
-
-        return response()->json([
-            'status' => 200,
-            'message' => 'Succesvol uitgelogd',
-            'id' => $user->id,
-            'name' => $user->name,
-            'age' => $user->age,
-            'score' => $user->score,
-            'notifications' => $notifications,
-            'times' => $splitTimes,
-        ]);
+            $user->score = $user->score + '312';
+            $user->save();
+    
+            return response()->json([
+                'status' => 200,
+                'message' => 'Succesvol uitgelogd',
+                'id' => $user->id,
+                'name' => $user->name,
+                'age' => $user->age,
+                'score' => $user->score,
+                'notifications' => $notifications,
+                'times' => $splitTimes,
+            ]);
+        } else {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Succesvol uitgelogd',
+                'id' => $user->id,
+                'name' => $user->name,
+                'age' => $user->age,
+                'score' => $user->score,
+                'notifications' => null,
+                'times' => null,
+            ]);
+        }
     }
 }

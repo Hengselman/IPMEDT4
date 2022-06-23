@@ -23,6 +23,8 @@ Route::post('/login', [App\Http\Controllers\AuthController::class, 'login']);
 Route::post('/scoreboard', [App\Http\Controllers\ScoreboardController::class, 'scoreboard']);
 
 Route::post('/oefening', [App\Http\Controllers\ExerciseController::class, 'exercise']);
+Route::post('/oefeningAf', [App\Http\Controllers\ExerciseController::class, 'exerciseFinished']);
+
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('logout', [App\Http\Controllers\AuthController::class, 'logout']);

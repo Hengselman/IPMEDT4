@@ -13,15 +13,24 @@ class ExerciseController extends Controller
         $user = User::where('name', $request->name)->first();
 
         if (AutomatedNotification::where('userId', $user->id)->first() !== null) {
-            $exercise = Exercise::where('intensity', 2)->all();
+            $exercise = Exercise::where('intensity', 2)->get()->random();
             return response()->json([
                 'status' => 200,
                 'userInfo' => $user,
-                'exercises' => $exercise->random(),
+                'exercises' => $exercise,
             ]);
         }
         return response()->json([
             'status' => 401,
+        ]);
+    }
+
+    public function exerciseFinished (Request $request) {
+        $user = User::where('name', $request->name)->first();
+        $user->score = $user->score + $request->exerciseCalories;
+        $user->save();
+        return response()->json([
+            'status' => 200,
         ]);
     }
 }

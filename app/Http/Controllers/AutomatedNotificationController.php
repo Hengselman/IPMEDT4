@@ -57,6 +57,10 @@ class AutomatedNotificationController extends Controller
                     'saturday' => $request->saturday,
                     'sunday' => $request->sunday,
                 ]);
+                return response()->json([
+                    'status' => 200,
+                    'message' => 'Succesvol upgedate',
+                ]);
             } else {
                 $notification->save();
             }

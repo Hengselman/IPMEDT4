@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\AutomatedNotification;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -92,7 +93,12 @@ class AuthController extends Controller
 
     public function profile (Request $request) {
 
+        
+
         $user = User::where('name', $request->name)->first();
+
+        $notifications = AutomatedNotification::where('userId', $user->id)->first();
+        $splitTimes = explode("/", $notifications->time);
 
         $user->score = $user->score + '312';
         $user->save();
@@ -104,6 +110,8 @@ class AuthController extends Controller
             'name' => $user->name,
             'age' => $user->age,
             'score' => $user->score,
+            'notifications' => $notifications,
+            'times' => $splitTimes,
         ]);
     }
 }

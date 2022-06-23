@@ -98,9 +98,6 @@ class AuthController extends Controller
         if (AutomatedNotification::where('userId', $user->id)->first() !== null) {
             $notifications = AutomatedNotification::where('userId', $user->id)->first();
             $splitTimes = explode("/", $notifications->time);
-
-            $user->score = $user->score + '312';
-            $user->save();
     
             return response()->json([
                 'status' => 200,

@@ -79,11 +79,14 @@
     }
     messaging.onMessage(function (payload) {
         const title = payload.notification.title;
+        const data = {
+            pathname: "https://google.com"
+        }
         const options = {
             body: payload.notification.body,
             icon: payload.notification.icon,
         };
-        new Notification(title, options);
+        new Notification(title, options, data);
     });
 </script>
 @endsection

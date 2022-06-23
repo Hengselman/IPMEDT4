@@ -27,19 +27,21 @@ class WebNotificationController extends Controller
         return response()->json(['Token successfully stored.']);
     }
 
-    public function sendWebNotification($title, $body, $click_action)
+    public function sendWebNotification($title, $body)
     {   
+        $FcmToken = User::whereNotNull('device_key')->pluck('device_key')->all();
+
         $url = 'https://fcm.googleapis.com/fcm/send';
         $FcmToken = User::whereNotNull('device_key')->pluck('device_key')->all();
-          
+
         $serverKey = 'AAAAT-8hCPM:APA91bEMPYj32xOwixISbHDb-VU_6WBkSur8GrbJLyPZ8ywskCRiNFX8eu8YdxhOtz-mzTcBJAzhEiHEUOFQmYQu824AV0DwbG5dKQ2Mq7KeHNpJRmWNtvW0yhhOv4j85KsuzKB_aHgB';
-        
+
         $data = [
             "registration_ids" => $FcmToken,
             "notification" => [
                 "title" => $title,
                 "body" => $body,
-                "click_action" => $click_action,  
+                "click_action" => "https://google.com"
             ],
         ];
         $encodedData = json_encode($data);
@@ -51,14 +53,13 @@ class WebNotificationController extends Controller
     
         $ch = curl_init();
       
-        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_URL, "https://fcm.googleapis.com/fcm/send");
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
         curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
         // Disabling SSL Certificate support temporarly
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);        
         curl_setopt($ch, CURLOPT_POSTFIELDS, $encodedData);
         // Execute post
         
@@ -92,9 +93,8 @@ class WebNotificationController extends Controller
         foreach ($splitTimes as $t) {
             if ($currentTime == $t) {
                 $title = "Tijd voor een oefening!";
-                $body = "http://localhost:3000/";
-                $click_action = "http://localhost:3000/";
-                return $this->sendWebNotification($title, $body, $click_action);
+                $body = "Ga naar de website en kijk welke oefening voor je klaar staat!";
+                return $this->sendWebNotification($title, $body);
             }
         };
     }

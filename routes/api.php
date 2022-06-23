@@ -28,6 +28,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 // Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('profiel', [App\Http\Controllers\AuthController::class, 'profile']);
+    Route::post('getId', [App\Http\Controllers\AuthController::class, 'getId']);
 // });
 
 // Route::post('/getUser', [App\Http\Controllers\AuthController::class, return $request->user()]);

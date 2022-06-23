@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             ExercisesTableSeeder::class,
-            TimesSeeder::class,
+            // TimesSeeder::class,
         ]);
     }
 }

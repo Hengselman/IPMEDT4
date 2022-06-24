@@ -91,8 +91,16 @@ class AuthController extends Controller
         ]);
     }
 
-    public function profile (Request $request) {
+    public function getId(Request $request) 
+    {
+        $user = User::where('name', $request->name)->first();
+        return response()->json([
+            'status' => 200,
+            'id' => $user->id
+        ]);
+    }
 
+    public function profile (Request $request) {
         $user = User::where('name', $request->name)->first();
 
         if (AutomatedNotification::where('userId', $user->id)->first() !== null) {

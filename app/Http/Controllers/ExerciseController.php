@@ -19,10 +19,19 @@ class ExerciseController extends Controller
                 'userInfo' => $user,
                 'exercises' => $exercise,
             ]);
+        } else if (AutomatedNotification::where('userId', $user->id)->first() === null) {
+            $exercise = Exercise::get()->random();
+            return response()->json([
+                'status' => 200,
+                'userInfo' => $user,
+                'exercises' => $exercise,
+            ]);
+        } else {
+            return response()->json([
+                'status' => 401,
+            ]);
         }
-        return response()->json([
-            'status' => 401,
-        ]);
+
     }
 
     public function exerciseFinished (Request $request) {

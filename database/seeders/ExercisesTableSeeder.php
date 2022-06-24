@@ -23,7 +23,7 @@ class ExercisesTableSeeder extends Seeder
         ]);
         DB::table('exercises')->insert([
             'name' => "Lunges",
-            'description' => "Sta rechtop met je benen op heupwijdte uit elkaar. Leg beide handen op je heupen. Span je buikspieren aan zodat je je rug rechtop houdt. Doe met één voet een grote stap naar voren. Je achterste voet til je iets op, zodat je teen de vloer nog aanraakt maar je hiel niet meer. Buig beide knieën tegelijk. Het doel is om beide knieën te laten stoppen in een hoek van 90 graden. Zorg ervoor dat je voorste knie altijd in lijn blijft met je voet, nooit er overheen. De knie van je achterste been raakt nagenoeg de vloer. Blijf een paar seconden in deze houding staan en lift vervolgens jezelf weer op om weer in de beginpositie te komen.",
+            'description' => "Sta rechtop met je benen op heupwijdte uit elkaar. Leg beide handen op je heupen. Span je buikspieren aan zodat je je rug rechtop houdt. Doe met één voet een grote stap naar voren.",
             'intensity' => 3,
             'calories' => 33,
         ]);
@@ -35,7 +35,7 @@ class ExercisesTableSeeder extends Seeder
         ]);
         DB::table('exercises')->insert([
             'name' => "Sit ups",
-            'description' => "Ga liggen met de rug op de vloer. Plaats de voeten plat op de vloer, knieën recht omhoog gericht. Kruis de onderarmen op de borst. Breng je borst naar je bekken door de buikspieren aan te spannen. Concentreer je op het krommen van de wervelkolom (bol maken van de rug). Je bovenrug is nu van de vloer gekomen. Breng in een vloeiende beweging de rest van het bovenlichaam verder omhoog. Breng het bovenlichaam rustig terug naar beneden en achteren. Rek de rug tot je bijna de vloer raakt.",
+            'description' => "Ga liggen met de rug op de vloer. Plaats de voeten plat op de vloer, knieën recht omhoog gericht. Kruis de onderarmen op de borst. Breng je borst naar je bekken door de buikspieren aan te spannen. Concentreer je op het krommen van de wervelkolom.",
             'intensity' => 3,
             'calories' => 68,
         ]);
@@ -49,7 +49,7 @@ class ExercisesTableSeeder extends Seeder
         ///////////////////////////////////////////// Medium intensity /////////////////////////////////////////////
         DB::table('exercises')->insert([
             'name' => "Squats",
-            'description' => "Ga rechtop staan met je voeten op schouderbreedte waarbij de voeten ongeveer 30 graden naar buiten wijzen. Zak door je knieën waarbij je je billen naar recht naar achteren duwt. Zorg dat je knieën de richting van je voeten volgt en niet voorbij je tenen komen. Dit doe je direct goed door de zakken vanuit je hakken. Houd tijdens de kniebuiging je buikspieren aangespannen, je rug recht, je kin omhoog, je borst naar voren en je schouders naar achteren. Op deze manier voorkom je een verkeerde houding en overbelasting van je spieren. Hurk zo diep mogelijk totdat je bovenbenen parallel zijn aan de vloer. Je bovenbeen en onderbeen maken dan een hoek van 90 graden. Ben je nog niet ervaren? Maak dan een minder diepe buiging ",
+            'description' => "Ga rechtop staan met je voeten op schouderbreedte waarbij de voeten ongeveer 30 graden naar buiten wijzen. Zak door je knieën waarbij je je billen naar recht naar achteren duwt.",
             'intensity' => 2,
             'calories' => 32,
         ]);
@@ -61,7 +61,7 @@ class ExercisesTableSeeder extends Seeder
         ]);
         DB::table('exercises')->insert([
             'name' => "Muurzitten",
-            'description' => "Ga met je rug tegen een muur staan, zak door je knieen alsof je gaat zitten in een hoek van 90 graden. Houd je bilspieren aangespannen als je in de gehurkte positie staat, en kom weer recht omhoog alsof je door een touwtje aan je kruin omhoog getrokken wordt.",
+            'description' => "Ga met je rug tegen een muur staan, zak door je knieen alsof je gaat zitten in een hoek van 90 graden. Houd je bilspieren aangespannen als je in de gehurkte positie staat, en kom weer recht omhoog alsof je door een touwtje.",
             'intensity' => 2,
             'calories' => 48,
         ]);

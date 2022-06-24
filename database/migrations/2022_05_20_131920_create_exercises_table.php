@@ -19,6 +19,7 @@ class CreateExercisesTable extends Migration
             $table->text('description');
             $table->integer('intensity');
             $table->integer('calories');
+            $table->string('imagePath');
             $table->timestamps();
         });
     }

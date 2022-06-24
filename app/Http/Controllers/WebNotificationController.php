@@ -92,8 +92,8 @@ class WebNotificationController extends Controller
         foreach ($splitTimes as $t) {
             if ($currentTime == $t) {
                 $title = "Tijd voor een oefening!";
-                $body = "http://localhost:3000/";
-                $click_action = "http://localhost:3000/";
+                $body = "Ga naar http://localhost:3000/oefening om je oefening uit te voeren!";
+                $click_action = "http://localhost:3000/oefening";
                 return $this->sendWebNotification($title, $body, $click_action);
             }
         };

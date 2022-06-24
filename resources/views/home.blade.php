@@ -13,17 +13,10 @@
                         {{ session('status') }}
                     </div>
                     @endif
-                    <form action="{{ route('send.web-notification') }}" method="POST">
+                    <form action="http://localhost:3000/profiel">
                         @csrf
-                        <div class="form-group">
-                            <label>Message Title</label>
-                            <input type="text" class="form-control" name="title">
-                        </div>
-                        <div class="form-group">
-                            <label>Message Body</label>
-                            <textarea class="form-control" name="body"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-success btn-block">Send Notification</button>
+                       
+                        <button type="submit" class="btn btn-success btn-block">Ga terug naar beweegminuut</button>
                     </form>
                 </div>
             </div>

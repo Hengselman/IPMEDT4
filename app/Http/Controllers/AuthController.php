@@ -106,28 +106,60 @@ class AuthController extends Controller
         if (AutomatedNotification::where('userId', $user->id)->first() !== null) {
             $notifications = AutomatedNotification::where('userId', $user->id)->first();
             $splitTimes = explode("/", $notifications->time);
-    
-            return response()->json([
-                'status' => 200,
-                'message' => 'Succesvol uitgelogd',
-                'id' => $user->id,
-                'name' => $user->name,
-                'age' => $user->age,
-                'score' => $user->score,
-                'notifications' => $notifications,
-                'times' => $splitTimes,
-            ]);
+            
+            if ($user->device_key != null) {
+                return response()->json([
+                    'status' => 200,
+                    'message' => 'Succesvol uitgelogd',
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'age' => $user->age,
+                    'score' => $user->score,
+                    'notifications' => $notifications,
+                    'times' => $splitTimes,
+                    'deviceKey' => 200,
+                ]);
+            } else {
+                return response()->json([
+                    'status' => 200,
+                    'message' => 'Succesvol uitgelogd',
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'age' => $user->age,
+                    'score' => $user->score,
+                    'notifications' => $notifications,
+                    'times' => $splitTimes,
+                    'deviceKey' => 401,
+                ]);
+            }
+
         } else {
-            return response()->json([
-                'status' => 200,
-                'message' => 'Succesvol uitgelogd',
-                'id' => $user->id,
-                'name' => $user->name,
-                'age' => $user->age,
-                'score' => $user->score,
-                'notifications' => null,
-                'times' => null,
-            ]);
+            if ($user->device_key != null) {
+                return response()->json([
+                    'status' => 200,
+                    'message' => 'Succesvol uitgelogd',
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'age' => $user->age,
+                    'score' => $user->score,
+                    'notifications' => null,
+                    'times' => null,
+                    'deviceKey' => 200,
+                ]);
+            } else {
+                return response()->json([
+                    'status' => 200,
+                    'message' => 'Succesvol uitgelogd',
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'age' => $user->age,
+                    'score' => $user->score,
+                    'notifications' => null,
+                    'times' => null,
+                    'deviceKey' => 401,
+                ]);
+            }
+
         }
     }
 }

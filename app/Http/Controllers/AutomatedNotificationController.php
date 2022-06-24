@@ -63,6 +63,10 @@ class AutomatedNotificationController extends Controller
                 ]);
             } else {
                 $notification->save();
+                return response()->json([
+                    'status' => 200,
+                    'message' => 'Succesvol upgedate',
+                ]);
             }
         } catch (Exception $e) {
             return redirect('/addNotification');
